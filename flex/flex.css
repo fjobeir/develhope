@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: lightgray;
+}
+#logo {
+    width: 70px;
+}
+header li {
+    display: inline-block;
+    margin:10px;
+}
+header a {
+    color: #333;
+    text-decoration:none;
+}
+/* header ul {
+    display: flex;
+} */
