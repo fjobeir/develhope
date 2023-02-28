@@ -17,7 +17,9 @@ header > ul > li {
     padding: 0 6px;
 }
 a {
-    color: #282828;
+    /* color: #ff0000; */
+    /* color: #F03; */
+    color: rgb(255, 0, 0);
     text-decoration: none;
 }
 
