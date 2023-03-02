@@ -1,0 +1,35 @@
+html {
+    font-family: 'Poppins', sans-serif;
+}
+header {
+    background-color: #24292f;
+    padding: 12px 20px;
+    color: #FFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#head1 {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+#search {
+    display: flex;
+    align-items: center;
+    border: 1px solid #666;
+    border-radius: 3px;
+    padding: 3px 6px;
+    gap: 6px;
+}
+#search input {
+    border: 0;
+    background-color: transparent;
+    font-size: 12px;
+    outline: none;
+    color: #FFF;
+}
+#search .material-symbols-outlined {
+    font-size: 20px;
+    color: #666;
+}
