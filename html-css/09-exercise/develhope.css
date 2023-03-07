@@ -1,0 +1,13 @@
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family:'Source Sans Pro';
+    background-color: #081229;
+    color: #FFF;
+}
+header {
+    background-color: #ec5990;
+}
