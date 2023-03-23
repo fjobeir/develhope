@@ -1,5 +1,11 @@
 var usedNames = []
 
+var icons = {
+    html: 'http://logos.com/html-icon',
+    js: '',
+    css: '',
+}
+
 function getName()
 {
     var name = document.getElementById('initial-name').value

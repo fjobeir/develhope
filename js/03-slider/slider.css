@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+}
+#slider {
+    background-color: pink;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    transition: .5s ease all;
+}
+.navigate-btn {
+    top: 50%;
+    position: absolute;
+}
+.next-btn {
+    right: 0px;
+}
+.slide {
+    min-width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#slide1 {
+    background-color: brown;
+}
+#slide2 {
+    background-color: blue;
+}
+#slide3 {
+    background-color: darkgoldenrod;
+}
+#slide4 {
+    background-color: darkgreen;
+}
+#slide5 {
+    background-color: darkmagenta;
+}
