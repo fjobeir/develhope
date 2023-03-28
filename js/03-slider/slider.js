@@ -1,7 +1,24 @@
 var currentSlide = 0
 var slides = document.getElementsByClassName('slide')
 var slider = document.getElementById('slider');
-var windowWidth = window.innerWidth // 823
+var windowWidth = window.innerWidth //823
+
+var prevBtn = document.querySelector('.prev-btn')
+prevBtn.addEventListener('click', (event) => {
+    console.log(event)
+    goPrevSlide()
+})
+var nextBtn = document.querySelector('.next-btn')
+nextBtn.addEventListener('click', function() {
+    goNextSlide()
+})
+
+window.addEventListener('resize', function() {
+    console.log('Window is resizing')
+    windowWidth = window.innerWidth
+    slider.style.transform = "translateX(-" + (currentSlide * windowWidth) + "px)"
+})
+
 
 function goNextSlide()
 {
@@ -21,4 +38,4 @@ function goPrevSlide()
     }
     slider.style.transform = "translateX(-" + (currentSlide * windowWidth) + "px)"
 }
- 
+
