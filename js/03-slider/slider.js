@@ -19,7 +19,6 @@ window.addEventListener('resize', function() {
     slider.style.transform = "translateX(-" + (currentSlide * windowWidth) + "px)"
 })
 
-
 function goNextSlide()
 {
     if (currentSlide < slides.length - 1) {
