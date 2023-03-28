@@ -1,6 +1,10 @@
 body {
     margin: 0;
 }
+#slider-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
 #slider {
     background-color: pink;
     width: 100%;

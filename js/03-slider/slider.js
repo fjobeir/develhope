@@ -1,18 +1,24 @@
 var currentSlide = 0
 var slides = document.getElementsByClassName('slide')
+var slider = document.getElementById('slider');
+var windowWidth = window.innerWidth // 823
 
 function goNextSlide()
 {
     if (currentSlide < slides.length - 1) {
         currentSlide = currentSlide + 1
-        var slider = document.getElementById('slider');
-        var windowWidth = window.innerWidth // 823
-        slider.style.transform = "translateX(-" + (currentSlide * windowWidth) + "px)"
     } else {
-        alert('Where are you going?!')
+        currentSlide = 0
     }
+    slider.style.transform = "translateX(-" + (currentSlide * windowWidth) + "px)"
 }
-
-// Homework
-// 1) goPrevSlide() function
-// 2) creating an infinite slider 
+function goPrevSlide()
+{
+    if (currentSlide > 0) {
+        currentSlide = currentSlide - 1
+    } else {
+        currentSlide = slides.length - 1
+    }
+    slider.style.transform = "translateX(-" + (currentSlide * windowWidth) + "px)"
+}
+ 
