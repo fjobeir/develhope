@@ -36,6 +36,27 @@ var questions = [
                 isCorrect: false
             }
         ]
+    },
+    {
+        questionText: 'How to change style in JS',
+        answers: [
+            {
+                answerText: 'using element.css attribute',
+                isCorrect: false
+            },
+            {
+                answerText: 'using element.design attribute',
+                isCorrect: false
+            },
+            {
+                answerText: 'using element.style attribute',
+                isCorrect: true
+            },
+            {
+                answerText: 'using elementStyle object',
+                isCorrect: false
+            }
+        ]
     }
 ]
 
@@ -50,7 +71,7 @@ for (var i = 0; i < questions.length; i++) {
         `
         for (var j = 0; j < questions[i].answers.length; j++) {
             newSlide += `<p>
-                <input type="radio" name="q${i}" value="${j}">
+                <input type="radio" name="q${i}" value="${j}" class="answer-radio">
                 <small>${questions[i].answers[j].answerText}</small>
             </p>`
         }
@@ -60,6 +81,15 @@ for (var i = 0; i < questions.length; i++) {
     </div>`
 
     slider.innerHTML += newSlide
+}
+
+const answers = document.getElementsByClassName('answer-radio');
+for (const answer of answers) {
+    answer.addEventListener(('click'), function() {
+        window.setTimeout(function() {
+            goNextSlide()
+        }, 500)
+    })
 }
 
 const resultBtn = document.getElementById('result-btn')
