@@ -1,0 +1,7 @@
+.post {
+    padding: 20px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    margin: 30px;
+    box-shadow: 0 0 5px 15px #ddd;
+}
