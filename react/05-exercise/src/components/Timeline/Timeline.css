@@ -1,0 +1,10 @@
+.wrapper {
+    display: flex;
+}
+.content {
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid #f3f4f5;
+    border-top:0;
+    border-bottom:0;
+}

@@ -1,0 +1,43 @@
+.post {
+    padding: 15px;
+    border-bottom: 1px solid #f3f4f5;
+    cursor: pointer;
+    font-size: 16px;
+}
+.post:hover {
+    background: rgba(0,0,0,.03);
+}
+.postContent {
+    display: flex;
+    overflow: hidden;
+}
+.post img {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    margin-right: 15px;
+}
+.name {
+    font-weight: 600;
+}
+.datetime {
+    font-weight: 200;
+    font-size: 13px;
+}
+.post p {
+    margin-bottom: 10px;
+    overflow: hidden;
+    max-width: 100%;
+}
+.comments {
+    margin: 15px 15px 15px 55px;
+}
+.comment {
+    display: flex;
+    margin-bottom: 8px;
+}
+.addcomment {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e6e7;
+}
