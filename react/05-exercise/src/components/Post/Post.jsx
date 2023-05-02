@@ -19,11 +19,10 @@ const Post = ({post}) => {
                     <p>{post.content}</p>
                     <div className='icons d-flex align-items-center'>
                         <div className='me-3 border rounded border bg-light py-1 px-2 d-flex align-items-center'>
-                        {false ? 
+                        {post.liked_by_current_user ? 
                             <Favorite color='error' onClick={() => {/** unlike the post */}} /> : 
                             <FavoriteBorder onClick={() => {/** like the post */}} /> }
                             <div className='ms-2 fw-bolder'>{post.likes_count}</div>
-                        
                         </div>
                         <div className='border rounded border bg-light py-1 px-2 d-flex align-items-center'>
                             <ChatBubbleOutline onClick={() => { /** Load comments */}} />
@@ -55,7 +54,7 @@ const Post = ({post}) => {
                                     </div>
                                     <div className='col-3 p-0'>
                                         <button disabled={loading} className='btn btn-primary w-100' onClick={() => {/** Add comment */}}>
-                                            <small>Add</small>
+                                            <small>Add Comment</small>
                                         </button>
                                     </div>
                                 </div>
