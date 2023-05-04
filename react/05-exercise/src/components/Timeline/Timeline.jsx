@@ -17,8 +17,6 @@ const Timeline = () => {
         }).then((response) => {
             response.json().then((json) => {
                 setPosts(json.data.data)
-                // When you add a post
-                // setPosts([json.data, ...posts])
             })
         })
     }
@@ -32,7 +30,7 @@ const Timeline = () => {
             <Menu />
             <div className="content">
                 <Head title={'Home'} />
-                <NewPost setPosts={() => { } /** setPosts */} />
+                <NewPost updatePosts={setPosts} />
                 <div className="mb-4">
                     {
                         posts.map((post, i) => {
