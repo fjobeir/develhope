@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 const Timeline = () => {
     const [posts, setPosts] = useState([])
     const getPosts = () => {
-        fetch('http://ferasjobeir.com/api/posts?page=1', {
+        fetch(`${process.env.REACT_APP_API_URL}posts?page=1`, {
             headers: {
                 'Authorization': 'Bearer n2nlsiJS98KKQv6vtLoGpCRljwK2BXbV24QS6SSA'
             }

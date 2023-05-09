@@ -1,7 +1,7 @@
 const Child = (props) => {
     const increase = () => {
         props.setCounter((counter) => {
-            return counter + 1
+            return 5
         })
     }
     return (

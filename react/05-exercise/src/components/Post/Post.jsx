@@ -6,9 +6,28 @@ import './Post.css'
 
 dayjs.extend(relativeTime)
 
-const Post = ({post}) => {
+const Post = ({ post }) => {
+    const [currentPost, setCurrentPost] = useState(post)
     const [detailed, setDetailed] = useState(false)
     const [loading, setLoading] = useState(false)
+    const like = () => {
+        fetch(`${process.env.REACT_APP_API_URL}posts/like`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer n2nlsiJS98KKQv6vtLoGpCRljwK2BXbV24QS6SSA'
+            },
+            body: JSON.stringify({
+                post_id: post.id
+            })
+        }).then((res) => {
+            setCurrentPost({
+                ...currentPost,
+                liked_by_current_user: true,
+                likes_count: parseInt(currentPost.likes_count) + 1
+            })
+        })
+    }
     return (
         <div className="post">
             <div className='postContent'>
@@ -19,10 +38,10 @@ const Post = ({post}) => {
                     <p>{post.content}</p>
                     <div className='icons d-flex align-items-center'>
                         <div className='me-3 border rounded border bg-light py-1 px-2 d-flex align-items-center'>
-                        {post.liked_by_current_user ? 
+                        {currentPost.liked_by_current_user ? 
                             <Favorite color='error' onClick={() => {/** unlike the post */}} /> : 
-                            <FavoriteBorder onClick={() => {/** like the post */}} /> }
-                            <div className='ms-2 fw-bolder'>{post.likes_count}</div>
+                            <FavoriteBorder onClick={like} /> }
+                            <div className='ms-2 fw-bolder'>{currentPost.likes_count}</div>
                         </div>
                         <div className='border rounded border bg-light py-1 px-2 d-flex align-items-center'>
                             <ChatBubbleOutline onClick={() => { /** Load comments */}} />
