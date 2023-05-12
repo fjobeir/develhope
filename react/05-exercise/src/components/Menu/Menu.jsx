@@ -1,6 +1,7 @@
 import { Home, Person, Mail, Explore, Bookmarks, ViewList, Lock } from '@mui/icons-material';
 import logo from '../../assets/images/logo.svg'
 import './Menu.css';
+import { Link } from 'react-router-dom';
 
 const links = [
     {
@@ -49,12 +50,12 @@ const Menu = () => {
                     {
                         links.map((link, i) => {
                             return (
-                                <a className='menuItem' key={i} href={link.to}>
+                                <Link className='menuItem' key={i} to={link.to}>
                                     <div className='icon'>
                                         {link.icon}
                                     </div>
                                     <div>{link.text}</div>
-                                </a>
+                                </Link>
                             )
                         })
                     }

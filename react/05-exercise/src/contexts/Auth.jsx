@@ -10,7 +10,7 @@ const AuthProvider = (props) => {
     
     return (
         <AuthContext.Provider value={{
-            token: 'n2nlsiJS98KKQv6vtLoGpCRljwK2BXbV24QS6SSA'
+            token: 'Skh5FAK9TxHokYigQVEfamApIyFg14K860stSjCF'
         }}>
             {props.children}
         </AuthContext.Provider>
