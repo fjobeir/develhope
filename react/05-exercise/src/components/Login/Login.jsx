@@ -1,13 +1,40 @@
 import classes from './Login.module.css'
+// import './Login.css';
 import logo from '../../assets/images/logo.svg'
 import { useContext, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../contexts/Auth'
 const Login = () => {
+    const { signIn } = useContext(AuthContext)
     const emailRef = useRef()
     const passwordRef = useRef()
     const [loading, setLoading] = useState(false)
-
-    // css modules, useEffect callback and signIn
+    const navigate = useNavigate()
+    // useEffect callback and signIn
+    const login = () => {
+        fetch(`${process.env.REACT_APP_API_URL}users/login`, {
+            method: 'post',
+            body: JSON.stringify({
+                email: emailRef.current.value,
+                password: passwordRef.current.value,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then((response) => {
+            response.json().then((json) => {
+                // json data
+                if (json.success) {
+                    signIn(json.token, json.data)
+                    navigate('/')
+                } else {
+                    alert('Invalid Credentials')
+                }
+            })
+        }).catch((e) => {
+            console.log(e)
+        })
+    }
     
     return (
         <div className="container">
@@ -32,6 +59,8 @@ const Login = () => {
                             </div>
                             <div className='col-7'>
                                 <button
+                                    onClick={login}
+                                    type='button'
                                     className='btn btn-primary w-100'
                                     disabled={loading}>
                                         {loading ? 'Please Wait' : 'Login'}

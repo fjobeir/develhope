@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './App.css';
 import Profile from './components/Profile/Profile';
 import Timeline from './components/Timeline/Timeline';
 import { Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login';
+import Signout from './components/Signout/Signout';
+import { AuthContext } from './contexts/Auth';
+import Notfound from './components/Notfound';
 
 // load the posts
 // load the products
@@ -11,13 +14,23 @@ import Login from './components/Login/Login';
 // load the services
 
 function App() {
-  
+
+  const { token } = useContext(AuthContext)
+
   return (
     <>
       <Routes>
-        <Route path='/' element={<Timeline />} />
+        {
+          token && (
+            <>
+              <Route path='/' element={<Timeline />} />
+              <Route path='/logout' element={<Signout />} />
+              <Route path='/profile' element={<Profile />} />
+            </>
+          )
+        }
         <Route path='/login' element={<Login />} />
-        <Route path='/profile' element={<Profile />} />
+        <Route path="*" element={<Notfound />} />
       </Routes>
     </>
   );

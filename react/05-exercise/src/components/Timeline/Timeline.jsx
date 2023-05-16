@@ -11,11 +11,11 @@ import Wrapper from '../Wrapper/Wrapper';
 
 const Timeline = () => {
     const [posts, setPosts] = useState([])
-    const authContext = useContext(AuthContext)
+    const { token } = useContext(AuthContext)
     const getPosts = () => {
         fetch(`${process.env.REACT_APP_API_URL}posts?page=1`, {
             headers: {
-                'Authorization': `Bearer ${authContext.token}`
+                'Authorization': `Bearer ${token}`
             }
         }).then((response) => {
             response.json().then((json) => {
