@@ -1,0 +1,12 @@
+.register {
+    border: 1px solid #dadce0;
+    border-radius: 15px;
+    background: #FDFDFD;
+}
+.logo {
+    width: 100px;
+    margin: auto;
+}
+.title {
+    font-weight: 600;
+}
