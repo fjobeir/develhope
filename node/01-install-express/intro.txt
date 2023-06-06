@@ -1,0 +1,8 @@
+MVC
+Model - View - Controller
+
+Model: descriping data we have in the app
+View: UI (HTML, CSS, JS in browser) Now handled by React
+Controllers: functions applied on a model.
+
+MVC: Structure
