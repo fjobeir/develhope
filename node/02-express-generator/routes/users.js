@@ -4,11 +4,22 @@ const db = require('../db')
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  res.send('respond with a resource');
+  db.query("SELECT * FROM users;", [], (error, result) => {
+    res.send(result.rows)
+  })
 });
-
-
-// insert, delete, update, select, join
+// Get single user
+router.get('/:id', function (req, res, next) {
+  const { id } = req.params
+  let numericId = parseInt(id)
+  if (isNaN(numericId)) {
+    return res.send('Please select a valid id')
+  }
+  db.query("SELECT * FROM users JOIN posts ON users.id=posts.user_id WHERE uses.id=$1;", [numericId], (error, result) => {
+    console.log(error, result)
+    res.send(result)
+  })
+});
 
 router.post('/', function (req, res, next) {
   const { name, email, password } = req.body
@@ -24,8 +35,35 @@ router.post('/', function (req, res, next) {
   res.send('Hi')
 })
 
-// methods: get, post, patch, delete
-// CRUD: Create, Read, Update, Delete
+router.patch('/:id', (req, res, next) => {
+  const { id } = req.params
+  let numericId = parseInt(id)
+  if (isNaN(numericId)) {
+    return res.send('Please select a valid id')
+  }
+  const { name, email } = req.body
+  db.query(
+    "UPDATE users SET name=$2, email=$3 WHERE id=$1;",
+    [numericId, name, email],
+    (error, result) => {
+      console.log(error)
+      res.send(result)
+    })
+})
+
+// Get single user
+router.delete('/:id', function (req, res, next) {
+  const { id } = req.params
+  let numericId = parseInt(id)
+  if (isNaN(numericId)) {
+    return res.send('Please select a valid id')
+  }
+  db.query("DELETE FROM users WHERE id=$1;", [numericId], (error, result) => {
+    console.log('ERROR', error)
+    console.log(result)
+    res.send(result)
+  })
+});
 
 module.exports = router;
 
