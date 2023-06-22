@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const models = require('../models');
 const idValidator = require('../lib/validators/id-validator');
+const { generateToken } = require('../lib/token');
 
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
@@ -92,6 +93,21 @@ router.delete('/:id', async function(req, res, next) {
       message: 'No rows deleted'
     })
   }
+})
+
+router.post('/login', async function(req, res, next) {
+  const { email, password } = req.body;
+  const user = await models.User.findOne({
+    where: {
+      email: email,
+      password: password
+    }
+  })
+  if (!user) return res.send({message: "Wrong username or password"});
+  return res.send({
+    user: user,
+    token: generateToken({id: user.id})
+  })
 })
 
 module.exports = router;
