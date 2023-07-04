@@ -1,6 +1,7 @@
 const idValidator = require("../lib/validators/id-validator");
 const models = require('../models')
 const { generateToken } = require('../lib/token');
+const { hashPassword, verifyPassword } = require("../lib/password");
 
 const index = async function (req, res, next) {
     const users = await models.User.findAll({
@@ -34,7 +35,7 @@ const store = async function (req, res, next) {
             },
             defaults: {
                 name,
-                password
+                password: hashPassword(password)
             }
         })
     if (created) {
@@ -97,10 +98,15 @@ const login = async function (req, res, next) {
     const user = await models.User.findOne({
         where: {
             email: email,
-            password: password
         }
     })
-    if (!user) return res.send({ message: "Wrong username or password" });
+    if (!user) return res.send({ message: "Wrong email" });
+
+    // verify the password
+    if (!verifyPassword(password, user.password)) {
+        return res.send({message: "invalid password"})
+    }
+
     return res.send({
         user: user,
         token: generateToken({ id: user.id })

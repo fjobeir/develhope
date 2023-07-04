@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       Post.belongsTo(models.User, {
         foreignKey: 'userId',
       })
+      Post.belongsToMany(models.User, {
+        through: 'Favorites'
+      })
     }
   }
   Post.init({
